@@ -1,2 +1,12 @@
-<!--pages/UnderwearDock.wxml-->
-<text>pages/UnderwearDock.wxml</text>
+<!-- pages/UnderwaterDock.wxml -->
+<view class="container">
+  <view class="info">
+    <text class="info-text">提示信息：</text>
+    <text>{{result}}</text>
+  </view>
+  <view class="buttons">
+    <button class="primary" bindtap="touchBtn_gettoken">获取token</button>
+    <button class="default" bindtap="touchBtn_getshadow">获取设备影子</button>
+    <button class="warn" bindtap="touchBtn_setCommand">设备命令下发</button>
+  </view>
+</view>
