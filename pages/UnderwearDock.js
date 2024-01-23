@@ -71,13 +71,21 @@ Page({
         var token=wx.getStorageSync('token');//读缓存中保存的token
         console.log("我的toekn: "+token);//打印完整消息 
         wx.request({
-            url: 'https://iotda.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_dproduct/shadow', //b3ba05dbd41b4b108c47b3768602d640
+            url: 'https://fe9efb512a.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_product/shadow', //b3ba05dbd41b4b108c47b3768602d640
             data:'',
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
             success: function(res){// success
               // success
                 console.log(res);//打印完整消息
+                var shadow=JSON.stringify(res.data.shadow[0].reported.properties);
+                console.log('设备影子数据：'+shadow);
+                //以下根据自己的设备属性进行解析
+                //我的设备影子：{"Temp":30,"temp":89,"Dev_data":77.20592,"humi":80,"light":3000,"GPS_N":3904.2279,"GPS_E":11706.2279,"warning":1,"MPU6050":1,"foot":12,"led":1,"temps":"89"}
+                // var Temp=JSON.stringify(res.data.shadow[0].reported.properties.Temp);
+                // var Humi=JSON.stringify(res.data.shadow[0].reported.properties.humi);
+                // console.log('温度='+Temp+'℃');
+                // console.log('湿度='+Humi+'%');
             },
             fail:function(){
                 // fail
@@ -95,8 +103,8 @@ Page({
         var that=this;  //这个很重要，在下面的回调函数中由于异步问题不能有效修改变量，需要用that获取
         var token=wx.getStorageSync('token');//读缓存中保存的token
         wx.request({
-            url: 'https://iotda.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_product/commands',
-            data:'{"service_id": "ChargeControl","command_name": "Switch","paras": { "value": ON}}',
+            url: 'https://fe9efb512a.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_product/commands',
+            data:'{"service_id": "ChargeControl","command_name": "Switch","paras": { "value": "ON"}}',
             method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
             success: function(res){// success
