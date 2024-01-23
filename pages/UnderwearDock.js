@@ -22,6 +22,8 @@ Page({
   touchBtn_getshadow:function()
   {
       console.log("获取设备影子按钮按下");
+      this.setData({result:'获取设备影子按钮按下'})
+      this.getshadow();
   },
    /**
    * 设备命令下发按钮按下：
@@ -29,6 +31,7 @@ Page({
   touchBtn_setCommand:function()
   {
       console.log("设备命令下发按钮按下");
+      this.setCommand();
   },  
 /**
      * 获取token
@@ -59,6 +62,58 @@ Page({
             complete: function() {
                 // complete
                 console.log("获取token完成");//打印完整消息
+            } 
+        });
+    },
+    getshadow:function(){
+        console.log("开始获取影子");//打印完整消息
+        var that=this;  //这个很重要，在下面的回调函数中由于异步问题不能有效修改变量，需要用that获取
+        var token=wx.getStorageSync('token');//读缓存中保存的token
+        console.log("我的toekn: "+token);//打印完整消息 
+        wx.request({
+            url: 'https://iotda.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_dproduct/shadow', //b3ba05dbd41b4b108c47b3768602d640
+            data:'',
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
+            success: function(res){// success
+              // success
+                console.log(res);//打印完整消息
+            },
+            fail:function(){
+                // fail
+                console.log("获取影子失败");//打印完整消息
+            },
+            complete: function() {
+                // complete
+                console.log("获取影子完成");//打印完整消息
+            } 
+        });
+    },
+
+    setCommand:function(){
+        console.log("开始下发命令。。。");//打印完整消息
+        var that=this;  //这个很重要，在下面的回调函数中由于异步问题不能有效修改变量，需要用that获取
+        var token=wx.getStorageSync('token');//读缓存中保存的token
+        wx.request({
+            url: 'https://iotda.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_product/commands',
+            data:'{"service_id": "ChargeControl","command_name": "Switch","paras": { "value": ON}}',
+            method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
+            success: function(res){// success
+                // success
+                console.log("下发命令成功");//打印完整消息
+                console.log(res);//打印完整消息
+                
+            },
+            fail:function(){
+                // fail
+                console.log("命令下发失败");//打印完整消息
+                console.log("请先获取token");//打印完整消息
+            },
+            complete: function() {
+                // complete
+                console.log("命令下发完成");//打印完整消息
+                that.setData({result:'设备命令下发完成'});
             } 
         });
     },
