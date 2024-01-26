@@ -7,6 +7,7 @@
   <view class="buttons">
     <button class="primary" bindtap="touchBtn_gettoken">获取token</button>
     <button class="default" bindtap="touchBtn_getshadow">获取设备影子</button>
-    <button class="warn" bindtap="touchBtn_setCommand">设备命令下发</button>
+    <button class="warn" bindtap="touchBtn_setChargeControlON">开始充电</button>
+    <button class="warn" bindtap="touchBtn_setChargeControlOFF">停止充电</button>
   </view>
 </view>

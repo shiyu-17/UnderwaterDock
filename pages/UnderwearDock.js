@@ -28,11 +28,16 @@ Page({
    /**
    * 设备命令下发按钮按下：
    */
-  touchBtn_setCommand:function()
+  touchBtn_setChargeControlON:function()
   {
-      console.log("设备命令下发按钮按下");
-      this.setCommand();
-  },  
+      console.log("设备充电开始命令下发按钮按下");
+      this.setChargeControlON(10);
+  },
+  touchBtn_setChargeControlOFF:function()
+  {
+      console.log("设备充电终止命令下发按钮按下");
+      this.setChargeControlON(0);
+  },
 /**
      * 获取token
      */
@@ -71,7 +76,7 @@ Page({
         var token=wx.getStorageSync('token');//读缓存中保存的token
         console.log("我的toekn: "+token);//打印完整消息 
         wx.request({
-            url: 'https://fe9efb512a.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_product/shadow', //b3ba05dbd41b4b108c47b3768602d640
+            url: 'https://fe9efb512a.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65b0c6242ccc1a58387576e0_UnderwaterDock/shadow', //b3ba05dbd41b4b108c47b3768602d640
             data:'',
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
@@ -97,34 +102,34 @@ Page({
             } 
         });
     },
-
-    setCommand:function(){
-        console.log("开始下发命令。。。");//打印完整消息
+    setChargeControlON:function(time){
+        console.log("开始下发充电命令。。。");//打印完整消息
         var that=this;  //这个很重要，在下面的回调函数中由于异步问题不能有效修改变量，需要用that获取
         var token=wx.getStorageSync('token');//读缓存中保存的token
         wx.request({
-            url: 'https://fe9efb512a.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65abe6e171d845632af91a4e_product/commands',
-            data:'{"service_id": "ChargeControl","command_name": "Switch","paras": { "value": "ON"}}',
+            url: 'https://fe9efb512a.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/b3ba05dbd41b4b108c47b3768602d640/devices/65b0c6242ccc1a58387576e0_UnderwaterDock/commands',
+            data:'{"service_id": "ChargeControl","command_name": "ChargeTime","paras": { "time": time}}',
             method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
             success: function(res){// success
                 // success
-                console.log("下发命令成功");//打印完整消息
+                console.log("充电下发命令成功");//打印完整消息
                 console.log(res);//打印完整消息
                 
             },
             fail:function(){
                 // fail
-                console.log("命令下发失败");//打印完整消息
+                console.log("充电命令下发失败");//打印完整消息
                 console.log("请先获取token");//打印完整消息
             },
             complete: function() {
                 // complete
-                console.log("命令下发完成");//打印完整消息
-                that.setData({result:'设备命令下发完成'});
+                console.log("充电命令下发完成");//打印完整消息
+                that.setData({result:'设备充电中'});
             } 
         });
     },
+
   /**
    * 生命周期函数--监听页面加载
    */
