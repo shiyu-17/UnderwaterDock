@@ -1,0 +1,47 @@
+<!--pages/index.wxml-->
+<view class="container">
+<view class="body">
+<view class="body-wrapper">
+<view class="date">
+<view class="date-logo">
+<image src="/images/电压.png"></image>
+</view>
+<view class="date-text">
+<view class="date-title">电压</view>
+<view class="date-value">{{Voltage}}V</view>
+</view>
+</view>
+<view class="date">
+  <view class="date-logo">
+<image src="/images/电流.png"></image>
+</view>
+<view class="date-text">
+<view class="date-title">电流</view>
+<view class="date-value">{{Current}}A</view>
+</view>
+</view>
+</view>
+<view class="body-wrapper">
+<view class="date">
+<view class="date-logo">
+<image src="/images/功率.png"></image>
+</view>
+<view class="date-text">
+<view class="date-title">功率</view>
+<view class="date-value">{{Power}}W</view>
+</view>
+</view>
+<view class="date">
+  <view class="date-logo">
+<image src="/images/充电.png"></image>
+</view>
+<view class="date-text">
+<view class="date-title">充电状态</view>
+<view class="date-value">{{Status}}</view>
+
+
+</view>
+</view>
+</view>
+</view>
+</view>

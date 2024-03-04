@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="header">
+    <view class="one">
+      <text>提示信息：</text>
+    </view>
+    <view class="two">
+      <text class="info-text" style="margin-top: 10px;">{{result}}</text>
+      <image src="/images/潜艇.png" style="width: 40px; height: 40px;"></image>
+    </view>
+  </view>
+  <view class="body">
+    <view class="body-wrapper">
+      <view class="date">
+        <view class="date-logo">
+          <image src="/images/电压.png"></image>
+        </view>
+        <view class="date-text">
+          <view class="date-title">电压</view>
+          <view class="date-value">{{Voltage}}V</view>
+        </view>
+      </view>
+      <view class="date">
+        <view class="date-logo">
+          <image src="/images/电流.png"></image>
+        </view>
+        <view class="date-text">
+          <view class="date-title">电流</view>
+          <view class="date-value">{{Current}}A</view>
+        </view>
+      </view>
+    </view>
+    <view class="body-wrapper">
+      <view class="date">
+        <view class="date-logo">
+          <image src="/images/功率.png"></image>
+        </view>
+        <view class="date-text">
+          <view class="date-title">功率</view>
+          <view class="date-value">{{Power}}W</view>
+        </view>
+      </view>
+      <view class="date">
+        <view class="date-logo">
+          <image src="/images/充电.png"></image>
+        </view>
+        <view class="date-text">
+          <view class="date-title">充电状态</view>
+          <view class="date-value">{{Status}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="body-wrapper">
+    <button class="button" type="primary" bindtap="touchBtn_gettoken" >获取token</button>
+    <button class="button" type="primary" bindtap="touchBtn_getshadow" >获取设备影子数据</button>
+</view>
+
+<view class="body-wrapper">
+    <button class="button" type="primary" bindtap="touchBtn_setCommand">强制开启充电命令</button>
+    <button class="button" type="primary" bindtap="touchBtn_setCommand_Set">下发……命令</button>
+</view>
+

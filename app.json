@@ -1,22 +1,28 @@
 {
   "pages": [
-    "pages/UnderwearDock"
+    "pages/HWhaisi/HWhaisi",
+    "pages/index/index",
+    "pages/index"
   ],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+  "tabBar": {
+    "color": "#FCFCFC",
+    "selectedColor": "#51A937",
+    "borderStyle": "white",
+    "backgroundColor": "#191919",
+    "list": [
+        {
+            "pagePath": "pages/HWhaisi/HWhaisi",
+            "iconPath": "images/icon_cloud_dark.png",
+            "selectedIconPath": "images/icon_cloud_HL.png",
+            "text": "控制台"
+          },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon_cloud_dark.png",
+        "selectedIconPath": "images/icon_cloud_HL.png",
+        "text": "设备信息"
+      }
+    ]
   },
-  "style": "v2",
-  "renderer": "skyline",
-  "rendererOptions": {
-    "skyline": {
-      "defaultDisplayBlock": true,
-      "disableABTest": true,
-      "sdkVersionBegin": "3.0.0",
-      "sdkVersionEnd": "15.255.255"
-    }
-  },
-  "componentFramework": "glass-easel",
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "sitemapLocation": "sitemap52.json"
 }
