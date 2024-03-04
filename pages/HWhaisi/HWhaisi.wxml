@@ -16,7 +16,7 @@
         </view>
         <view class="date-text">
           <view class="date-title">电压</view>
-          <view class="date-value">{{Voltage}}V</view>
+          <view class="date-value">{{voltage}}V</view>
         </view>
       </view>
       <view class="date">
@@ -25,7 +25,7 @@
         </view>
         <view class="date-text">
           <view class="date-title">电流</view>
-          <view class="date-value">{{Current}}A</view>
+          <view class="date-value">{{current}}A</view>
         </view>
       </view>
     </view>
@@ -36,7 +36,7 @@
         </view>
         <view class="date-text">
           <view class="date-title">功率</view>
-          <view class="date-value">{{Power}}W</view>
+          <view class="date-value">{{power}}W</view>
         </view>
       </view>
       <view class="date">
@@ -45,7 +45,7 @@
         </view>
         <view class="date-text">
           <view class="date-title">充电状态</view>
-          <view class="date-value">{{Status}}</view>
+          <view class="date-value">{{status}}</view>
         </view>
       </view>
     </view>
@@ -53,12 +53,12 @@
 </view>
 
 <view class="body-wrapper">
-    <button class="button" type="primary" bindtap="touchBtn_gettoken" >获取token</button>
-    <button class="button" type="primary" bindtap="touchBtn_getshadow" >获取设备影子数据</button>
+    <button class="button button-large" type="primary" bindtap="touchBtn_gettoken" >获取token </button>
+    <button class="button button-large" type="primary" bindtap="touchBtn_getshadow" >获取设备影子数据</button>
 </view>
 
 <view class="body-wrapper">
-    <button class="button" type="primary" bindtap="touchBtn_setCommand">强制开启充电命令</button>
-    <button class="button" type="primary" bindtap="touchBtn_setCommand_Set">下发……命令</button>
+    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand">强制开启充电命令</button>
+    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand_Set">下发……命令</button>
 </view>
 

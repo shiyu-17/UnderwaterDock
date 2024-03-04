@@ -66,3 +66,15 @@
     font-size: 16px;
     font-weight: bold;
   }
+
+  .button {
+    width: 200rpx; /* 设置按钮的宽度 */
+    height: 80rpx; /* 设置按钮的高度 */
+    font-size: 32rpx; /* 设置按钮的字体大小 */
+  }
+  
+  .button-large {
+    width: 300rpx; /* 设置大号按钮的宽度 */
+    height: 100rpx; /* 设置大号按钮的高度 */
+    font-size: 36rpx; /* 设置大号按钮的字体大小 */
+  }

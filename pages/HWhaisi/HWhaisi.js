@@ -19,6 +19,12 @@ Page({
   /**
    * 获取设备影子按钮按下：
    */
+  data: {
+    voltage: '0',
+    current: '0',
+    power: '0',
+    status: '0'
+  },
   touchBtn_getshadow:function()
   {
       console.log("获取设备影子按钮按下");
@@ -100,12 +106,15 @@ Page({
               var Power=JSON.stringify(res.data.shadow[0].reported.properties.Power);
               var Status=JSON.stringify(res.data.shadow[0].reported.properties.Status);
               
-              
               console.log('电压='+Voltage+'V');
               console.log('电流='+Current+'A');
               console.log('功率='+Power+'W');
               console.log('充电状态'+Status+'(0:为供电 1：已供电)');
-              that.setData({result: '\n电压' + Voltage + 'V\n电流' + Current + 'A\n功率' + Power + 'W\n充电状态' + Status + '(0:为供电 1：已供电)'});
+              if(Status){
+                that.setData({voltage: Voltage,current: Current,power:Power,
+                status: "供电"});}
+              else {that.setData({voltage: Voltage,current: Current,power: Power,tatus: "已供电"});}
+              //that.setData({result: '\n电压' + Voltage + 'V\n电流' + Current + 'A\n功率' + Power + 'W\n充电状态' + Status + '(0:为供电 1：已供电)'});
           },
           fail:function(){
               // fail
