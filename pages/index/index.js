@@ -1,6 +1,16 @@
 // pages/index.js
 Page({
-
+    data: {
+        videoIndex: 1
+      },
+      changeVideo: function() {
+        var newIndex = this.data.videoIndex + 1;
+        var newVideoSrc = 'http://192.168.59.138:3000/video' + newIndex + '.mp4';
+        this.setData({
+          'videoIndex': newIndex
+        });
+        wx.createVideoContext('videoPlayer').src = newVideoSrc;
+      },
   /**
    * 页面的初始数据
    */
