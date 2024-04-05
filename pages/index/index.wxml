@@ -1,13 +1,27 @@
 
-<!-- index.wxml -->
-<!-- <view class="container">
-  <video id="myVideo" controls autoplay></video>
-  <button bindtap="changeVideo">Change Video</button>
-</view> -->
 <view class="container">
-  <video src="http://192.168.59.138:3000/video.mp4" ></video>
+  <view class="header">
+    <view class="one">
+      <text>提示信息：</text>
+    </view>
+    <view class="two">
+      <text class="info-text" style="margin-top: 10px;">{{infos}}</text>
+      <image src="/images/潜艇.png" style="width: 40px; height: 40px;"></image>
+    </view>
+  </view>
 </view>
 
+<view class="container"> 
+    <video src="http://localhost:3000/video.mp4" id="Video" danmu-btn enable-danmu></video> 
+</view>
 
+<view class="body-wrapper">
+    <button class="button button-large" type="primary" size="mini" bindtap="videoPlay">播放</button>
+    <button class="button button-large" type="primary" size="mini" bindtap="videoPause">暂停</button>
+</view>
 
+<view class="body-wrapper">
+    <button class="button button-large" type="primary" size="mini" bindtap="videoPlayBackRate">1.25倍快进</button>
+    <button class="button button-large" type="primary" size="mini" bindtap="videoSeek0">重新播放</button>
+</view>
 

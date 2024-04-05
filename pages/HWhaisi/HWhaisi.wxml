@@ -1,3 +1,4 @@
+
 <view class="container">
   <view class="header">
     <view class="one">
@@ -58,7 +59,13 @@
 </view>
 
 <view class="body-wrapper">
-    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand">强制开启充电命令</button>
-    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand_Set">下发……命令</button>
+    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand">强制开启充电命令</button>    
+    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand_Set">强制暂停充电</button>
+</view>
+
+<view class="body-wrapper">
+    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand_Task">下发任务</button>
+
+    <button class="button button-large" type="primary" bindtap="touchBtn_setCommand_Set">数据回传</button>
 </view>
 

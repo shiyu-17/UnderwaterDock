@@ -49,6 +49,12 @@ Page({
       this.setData({result:'设备命令下发按钮按下，喂食命令正在下发'});
       this.setCommand_Set();
   },
+  touchBtn_setCommand_Task:function()
+  {
+      console.log("下发任务按钮按下");
+      this.setData({result:'下发任务按钮按下'});
+      this.setCommand_Task();
+  },
 
       /**
      * 获取token
@@ -190,6 +196,33 @@ setCommand_Set:function(){
   });
 },
 
+setCommand_Task:function(){
+    console.log("下发任务（LED）");//打印完整消息
+      var that=this;  //这个很重要，在下面的回调函数中由于异步问题不能有效修改变量，需要用that获取
+      var token=wx.getStorageSync('token');//读缓存中保存的token
+      wx.request({
+          url: 'https://aa8625b760.iotda.cn-north-4.myhuaweicloud.com/v5/iot/0db8e55a1f00f4bd2f3fc01e4530bf52/devices/657e5b12f672eb209df0f46f_dev1/commands',
+          data:'{"service_id": "raspi","command_name": "LED_On","paras": { "LED_Status_On": "LED:ON"}}',
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {'content-type': 'application/json','X-Auth-Token':token }, //请求的header 
+          success: function(res){// success
+              // success
+              console.log("Power_On下发命令成功");//打印完整消息
+              console.log(res);//打印完整消息
+              
+          },
+          fail:function(){
+              // fail
+              console.log("命令下发失败");//打印完整消息
+              console.log("请先获取token");//打印完整消息
+          },
+          complete: function() {
+              // complete
+              console.log("Power_On命令下发完成");//打印完整消息
+              that.setData({result:'设备命令下发完成'});
+          } 
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
